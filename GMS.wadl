@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://research.sun.com/wadl/2006/10">
+    <doc xmlns:jersey="http://jersey.java.net/" jersey:generatedBy="Jersey: 1.8 06/24/2011 12:17 PM"/>
+    <resources base="http://localhost:8080/GraphManagerService/resources/">
+        <resource path="/graph">
+            <method id="createGraph" name="POST">
+                <request>
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="graphname" style="query" type="xs:string"/>
+                </request>
+                <response>
+                    <representation mediaType="*/*"/>
+                </response>
+            </method>
+            <resource path="{graphid}/edge">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="graphid" style="template" type="xs:string"/>
+                <method id="addEdge" name="POST">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="edgename" style="query" type="xs:string"/>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="vertex1" style="query" type="xs:string"/>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="vertex2" style="query" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="*/*"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="/graphtest">
+                <method id="graphTest" name="GET">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="inputstring" style="query" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="text/plain"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="{graphid}">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="graphid" style="template" type="xs:string"/>
+                <method id="deleteGraph" name="DELETE">
+                    <response>
+                        <representation mediaType="*/*"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="{graphid}/vertex">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="graphid" style="template" type="xs:string"/>
+                <method id="addVertex" name="POST">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="vertexname" style="query" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="*/*"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="{graphid}/vertex/{vertexid}.xml">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="graphid" style="template" type="xs:string"/>
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="vertexid" style="template" type="xs:string"/>
+                <method id="getVertexXML" name="GET">
+                    <response>
+                        <representation mediaType="application/xml"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="{graphid}/vertex/{vertexid}.json">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="graphid" style="template" type="xs:string"/>
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="vertexid" style="template" type="xs:string"/>
+                <method id="getVertexJSON" name="GET">
+                    <response>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+    </resources>
+</application>
